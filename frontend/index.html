@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recipe Explorer</title>
+  <link href="./dist/styles.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Quicksand:wght@500..700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script> <!-- Tailwind CSS -->
+</head>
+<body class="bg-pattern bg-repeat h-screen flex items-center justify-center font-body" style="background-image: url('assets/bg.jpg');">
+  <div class="bg-white shadow-lg rounded-xl max-w-sm w-full p-4 space-y-4 border-2 border-gray-300">
+    <div class="text-center">
+      <img src="./assets/logo.png" alt="logo" class="w-10 mx-auto mb-2">
+      <h2 class="text-2xl font-bold text-custom-orange font-fun">Food Recipe</h2><br>
+      <p class="text-xl text-custom-orange">Sign in</p>
+    </div>
+    <form id="signin-form" class="space-y-3">
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Email</label>
+        <input id="email" type="email" class="w-full border border-gray-300 rounded-md p-2" placeholder="example@mail.com" required>
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Password</label>
+        <input id="password" type="password" class="w-full border border-gray-300 rounded-md p-2" required>
+      </div>
+      <button class="w-full bg-orange-500 hover:bg-orange-600 text-white rounded-md p-2" type="submit">Sign in</button>
+    </form>
+    <p class="text-sm text-center text-gray-500">
+      Don’t have an account? <a href="signup.html" class="text-orange-500 font-semibold">Sign up</a>
+    </p>
+  </div>
+
+  <script>
+    document.querySelector("#signin-form").addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      // Get email and password values
+      const email = document.querySelector("#email").value;
+      const password = document.querySelector("#password").value;
+
+      // Validate inputs
+      if (!email || !password) {
+        alert("Both email and password are required!");
+        return;
+      }
+
+      // Send the data to the backend API
+      fetch("http://localhost:3001/api/auth/signin", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.error) {
+            alert(data.error); // Show error message if login fails
+          } else {
+            alert("Sign-in successful!");
+            window.location.href = "third.html"; // Redirect to your third page on success
+          }
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+          alert("Email id does'nt exist,try SignUp");
+        });
+    });
+  </script>
+  <script src="signin.js"></script>
+</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recipe Details</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Quicksand:wght@500..700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body style="font-family: 'Quicksand', sans-serif;" class="bg-gray-100">
+
+  <!-- Header Section -->
+  <header class="relative w-full h-80">
+    
+    <img src="assets/milkshake-with-whole-cookie-and-crumbs.jpg" class="w-full h-full object-cover opacity-80">
+    <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+    <div class="absolute top-4 left-4 flex items-center text-yellow-500 text-3xl font-bold" style="font-family: 'DM Serif Text', serif;">
+      <img src="assets/logo.png" alt="Logo" class="h-10 mr-2"> <!-- Adjust the height as needed -->
+      <span>Food Recipe</span>
+    </div>
+    <div class="absolute top-4 right-4 flex items-center">
+      <div class="relative">
+        <input type="text" placeholder="Search recipe" class="bg-white-800 text-white rounded-full pl-10 pr-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500" />
+        <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+          <span class="material-icons">search</span>
+        </span>
+      </div>
+      <img src="assets/user logo.jpg" alt="User  Logo" class="h-8 ml-4"> <!-- Adjust the height as needed -->
+    </div>
+    <div class="absolute inset-0 flex flex-col justify-center items-center text-white text-center px-4">
+      <h1 class="text-4xl font-extrabold mb-2 text-yellow-500" style="font-family: 'DM Serif Text', serif;">
+        Oreo milk shake
+      </h1>
+      <div class="flex items-center justify-center space-x-8 text-sm font-medium">
+        <span class="flex items-center"><span class="material-icons mr-1">schedule</span> Duration: 15m</span>
+        <span class="flex items-center"><span class="material-icons mr-1">person</span> Chef: Binaarth</span>
+        <span class="flex items-center"><span class="material-icons mr-1">restaurant</span>veg</span>
+        <span class="flex items-center"><span class="material-icons mr-1">star</span> 4.5</span>
+      </div>
+    </div>
+    
+     
+  </header>
+
+  <!-- Recipe Content -->
+  <main class="relative bg-white text-black p-6 mt-5 max-w-7xl mx-auto rounded-lg shadow-md">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <!-- Ingredients Section -->
+      <div>
+        <h2 class="text-2xl text-yellow-600 font-semibold mb-4">Ingredients</h2>
+        <ul class="list-none">
+          <li class="flex justify-between py-1 border-b"><span>Vanilla ice cream</span><span>1 cup</span></li>
+          <li class="flex justify-between py-1 border-b"><span>Milk</span><span>1 cup</span></li>
+          <li class="flex justify-between py-1 border-b"><span>Oreo cookies</span><span>8</span></li>
+          <li class="flex justify-between py-1 border-b"><span>Chocolate syrup</span><span>2 tsp</span></li>
+          <li class="flex justify-between py-1 border-b"><span>Oreo cookies(garnish)</span><span>2</span></li>
+        </ul>
+      </div>
+
+      
+            <!-- Directions Section -->
+            <div>
+              <h2 class="text-2xl text-yellow-600 font-semibold mb-4">Directions</h2>
+              <div class="border rounded-md p-4">
+                <details class="border p-4 rounded-md mb-2">
+                  <summary class="font-semibold cursor-pointer">Step 1</summary>
+                  <p class="mt-2 text-sm text-gray-600">
+                    Gather the ingredients.
+                  </p>
+                </details>
+                <details class="border p-4 rounded-md mb-2">
+                  <summary class="font-semibold cursor-pointer">Step 2</summary>
+                  <p class="mt-2 text-sm text-gray-600">1 cup vannila ice cream, 1 cup milk, 8 oreo cookies, and
+                    2 tablespoon chocolate syrup in a blender and puree until smooth.
+                  </p>
+                </details>
+                <details class="border p-4 rounded-md mb-2">
+                  <summary class="font-semibold cursor-pointer">Step 3</summary>
+                  <p class="mt-2 text-sm text-gray-600">Crush the remaining 2 oreo cookies for the garnish by placing them
+                    in a zip-close plastic bag and pounding on them a few times with a rolling pin until they crumble.
+                  </p>
+                </details>
+                <details class="border p-4 rounded-md mb-2">
+                  <summary class="font-semibold cursor-pointer">Step 4</summary>
+                  <p class="mt-2 text-sm text-gray-600">
+                    Pour the milkshake into glass and top each with the crushed oreo cookies crumbs.  Garnish with straw!.
+                  </p>
+                </details>
+              </div>
+            </div>
+          </div>
+      
+
+    <!-- Rating & Comments Section -->
+    <section class="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <!-- Rating Form -->
+      <div class="border rounded-md p-4 bg-gray-50 shadow-md">
+        <h2 class="text-lg text-yellow-600 mb-4">Cooked this? Comment and rate the Recipe</h2>
+        <form id="ratingForm" class="space-y-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-600">Name</label>
+            <input id="nameInput" type="text" class="w-full border rounded-md p-2" required>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-600">Email</label>
+            <input type="email" class="w-full border border-gray-300 rounded-md p-2">
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-gray-600">Rating</label>
+            <div class="flex gap-1" id="stars">
+              <span class="star text-gray-400 text-3xl cursor-pointer">&#9733;</span>
+              <span class="star text-gray-400 text-3xl cursor-pointer">&#9733;</span>
+              <span class="star text-gray-400 text-3xl cursor-pointer">&#9733;</span>
+              <span class="star text-gray-400 text-3xl cursor-pointer">&#9733;</span>
+              <span class="star text-gray-400 text-3xl cursor-pointer">&#9733;</span>
+            </div>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-600">Comment</label>
+            <textarea id="commentInput" rows="3" class="w-full border rounded-md p-2" required></textarea>
+          </div>
+          <button type="submit" class="w-full bg-yellow-500 hover:bg-orange-600 text-white p-2 rounded-md">
+            Submit Comment
+          </button>
+        </form>
+      </div>
+
+      <!-- Comments Section -->
+      <div class="border rounded-md p-4 bg-white shadow-md">
+        <h2 class="text-lg text-yellow-600 mb-4">Comments</h2>
+        <div id="commentsList" class="space-y-4"></div>
+        <div id="commentsSection" class="space-y-4">
+          <div class="p-4 border rounded-lg">
+            <p class="font-medium">⭐ 4 - Aaradhya</p>
+            <p class="text-sm text-gray-600">I made it with 2 cup of milk and it turned out very well.  I loved this recipe.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Rating stars functionality
+    
+    let currentRating = 0;
+    const stars = document.querySelectorAll('.star');
+    stars.forEach((star,index) => {
+      star.addEventListener('click', () => {
+        currentRating = index + 1; // Set current rating
+        stars.forEach((s, i)  => {
+          if(i < currentRating){
+            s.classList.add('text-yellow-500');
+            s.classList.remove('text-gray-400');
+          }
+          else{
+            s.classList.add('text-gray-400');
+            s.classList.remove('text-yellow-500');
+          }
+      });
+    });
+  });
+
+    // Add new comment dynamically
+    document.getElementById('ratingForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById('nameInput').value;
+      const comment = document.getElementById('commentInput').value;
+
+      if (currentRating === 0) {
+        alert('Please provide a rating!');
+        return;
+      }
+
+      const newComment = document.createElement('div');
+      newComment.className = 'p-4 border rounded-lg';
+      newComment.innerHTML = `
+          <p class="font-medium">⭐ ${currentRating} - ${name}</p>
+          <p class="text-sm text-gray-600">${comment}</p>
+          `;
+          const commentList = document.getElementById('commentsList');
+          commentList.prepend(newComment);
+      
+      // Reset form and rating
+      document.getElementById('ratingForm').reset();
+      currentRating = 0;
+      stars.forEach((star) => {
+        star.classList.add('text-gray-400');
+        star.classList.remove('text-yellow-500');
+      });
+    });
+  </script>
+</body>
+</html>

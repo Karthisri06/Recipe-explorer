@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recipe Details</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Quicksand:wght@500..700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body style="font-family: 'Quicksand', sans-serif;" class="bg-gray-100">
+
+  <!-- Header Section -->
+  <header class="relative w-full h-80">
+    
+    <img src="assets/images.jpeg" alt="Recipe Banner" class="w-full h-full object-cover opacity-80">
+    <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+    <div class="absolute top-4 left-4 flex items-center text-yellow-500 text-3xl font-bold" style="font-family: 'DM Serif Text', serif;">
+      <img src="assets/logo.png" class="h-10 mr-2"> <!-- Adjust the height as needed -->
+      <span>Food Recipe</span>
+    </div>
+    <div class="absolute top-4 right-4 flex items-center">
+      <div class="relative">
+        <input type="text" placeholder="Search recipe" class="bg-white-800 text-white rounded-full pl-10 pr-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500" />
+        <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+          <span class="material-icons">search</span>
+        </span>
+      </div>
+      <img src="assets/user logo.jpg" alt="User  Logo" class="h-8 ml-4"> <!-- Adjust the height as needed -->
+    </div>
+    <div class="absolute inset-0 flex flex-col justify-center items-center text-white text-center px-4">
+      <h1 class="text-4xl font-extrabold mb-2 text-yellow-500" style="font-family: 'DM Serif Text', serif;">
+        Chicken Biryani
+      </h1>
+      <div class="flex items-center justify-center space-x-8 text-sm font-medium">
+        <span class="flex items-center"><span class="material-icons mr-1">schedule</span> Duration: 1h 12m</span>
+        <span class="flex items-center"><span class="material-icons mr-1">person</span> Chef: Binaarth</span>
+        <span class="flex items-center"><span class="material-icons mr-1">restaurant</span>Non-veg</span>
+        <span class="flex items-center"><span class="material-icons mr-1">star</span> 4.7</span>
+      </div>
+    </div>
+    
+     
+  </header>
+
+  <!-- Recipe Content -->
+  <main class="relative bg-white text-black p-6 mt-5 max-w-7xl mx-auto rounded-lg shadow-md">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <!-- Ingredients Section -->
+      <div>
+        <h2 class="text-2xl text-yellow-600 font-semibold mb-4">Ingredients</h2>
+        <ul class="list-none">
+          <li class="flex justify-between py-1 border-b"><span>Chicken</span><span>1 KG</span></li>
+          <li class="flex justify-between py-1 border-b"><span>Rice</span><span>1 KG</span></li>
+          <li class="flex justify-between py-1 border-b"><span>Large red onions</span><span>5</span></li>
+          <li class="flex justify-between py-1 border-b"><span>Peanut oil</span><span>200 ml</span></li>
+          <li class="flex justify-between py-1 border-b"><span>Ginger garlic paste</span><span>2 tsp</span></li>
+          <li class="flex justify-between py-1 border-b"><span>Ground turmeric</span><span>1/2 tsp</span></li>
+          <li class="flex justify-between py-1 border-b"><span>Lemon</span><span>1</span></li>
+          <li class="flex justify-between py-1 border-b"><span>Green chillies</span><span>3</span></li>
+          <li class="flex justify-between py-1 border-b"><span>Cinnamon sticks</span><span>2</span></li>
+          <li class="flex justify-between py-1 border-b"><span>Cumin seeds</span><span>1 tsp</span></li>
+          <li class="flex justify-between py-1 border-b"><span>Cloves</span><span>6</span></li>
+          <li class="flex justify-between py-1 border-b"><span>Coriander & Mint</span><span>Each 1 bunch</span></li>
+          <li class="flex justify-between py-1 border-b"><span>Salt for taste</span></li>
+
+        </ul>
+      </div>
+
+      
+            <!-- Directions Section -->
+            <div>
+              <h2 class="text-2xl text-yellow-600 font-semibold mb-4">Directions</h2>
+              <div class="border rounded-md p-4">
+                <details class="border p-4 rounded-md mb-2">
+                  <summary class="font-semibold cursor-pointer">Step 1</summary>
+                  <p class="mt-2 text-sm text-gray-600">
+                    Combine chicken (500g) with yogurt (½ cup), ginger-garlic paste, spices, and salt. Marinate for 1-2 hours.
+                  </p>
+                </details>
+                <details class="border p-4 rounded-md mb-2">
+                  <summary class="font-semibold cursor-pointer">Step 2</summary>
+                  <p class="mt-2 text-sm text-gray-600">Boil water with whole spices. Cook rice until 70% done, then drain.</p>
+                </details>
+                <details class="border p-4 rounded-md mb-2">
+                  <summary class="font-semibold cursor-pointer">Step 3</summary>
+                  <p class="mt-2 text-sm text-gray-600">Fry onions until golden brown. Cook marinated chicken for 15 mins.</p>
+                </details>
+                <details class="border p-4 rounded-md mb-2">
+                  <summary class="font-semibold cursor-pointer">Step 4</summary>
+                  <p class="mt-2 text-sm text-gray-600">
+                    Layer chicken, rice, and fried onions. Add saffron milk and steam (dum) for 20-25 minutes.
+                  </p>
+                </details>
+                <details class="border p-4 rounded-md">
+                  <summary class="font-semibold cursor-pointer">Step 5</summary>
+                  <p class="mt-2 text-sm text-gray-600">Let rest, mix gently, and serve hot with raita or salad.</p>
+                </details>
+              </div>
+            </div>
+          </div>
+      
+
+    <!-- Rating & Comments Section -->
+    <section class="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <!-- Rating Form -->
+      <div class="border rounded-md p-4 bg-gray-50 shadow-md">
+        <h2 class="text-lg text-yellow-600 mb-4">Cooked this? Comment and rate the Recipe</h2>
+        <form id="ratingForm" class="space-y-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-600">Name</label>
+            <input id="nameInput" type="text" class="w-full border rounded-md p-2" required>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-600">Email</label>
+            <input type="email" class="w-full border border-gray-300 rounded-md p-2">
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-gray-600">Rating</label>
+            <div class="flex gap-1" id="stars">
+              <span class="star text-gray-400 text-3xl cursor-pointer">&#9733;</span>
+              <span class="star text-gray-400 text-3xl cursor-pointer">&#9733;</span>
+              <span class="star text-gray-400 text-3xl cursor-pointer">&#9733;</span>
+              <span class="star text-gray-400 text-3xl cursor-pointer">&#9733;</span>
+              <span class="star text-gray-400 text-3xl cursor-pointer">&#9733;</span>
+            </div>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-600">Comment</label>
+            <textarea id="commentInput" rows="3" class="w-full border rounded-md p-2" required></textarea>
+          </div>
+          <button type="submit" class="w-full bg-yellow-500 hover:bg-orange-600 text-white p-2 rounded-md">
+            Submit Comment
+          </button>
+        </form>
+      </div>
+
+      <!-- Comments Section -->
+      <div class="border rounded-md p-4 bg-white shadow-md">
+        <h2 class="text-lg text-yellow-600 mb-4">Comments</h2>
+        <div id="commentsList" class="space-y-4"></div>
+        <div id="commentsSection" class="space-y-4">
+          <div class="p-4 border rounded-lg">
+            <p class="font-medium">⭐ 4 - Shanmuga Pandiyan</p>
+            <p class="text-sm text-gray-600">This briyani recipe is amazing! The step-by-step explanation makes it so easy
+              to follow, even for begineers.  I loved how details you were about layering and dum cooking--it really
+              helped bring out the authentic flavors.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Rating stars functionality
+    
+    let currentRating = 0;
+    const stars = document.querySelectorAll('.star');
+    stars.forEach((star,index) => {
+      star.addEventListener('click', () => {
+        currentRating = index + 1; // Set current rating
+        stars.forEach((s, i)  => {
+          if(i < currentRating){
+            s.classList.add('text-yellow-500');
+            s.classList.remove('text-gray-400');
+          }
+          else{
+            s.classList.add('text-gray-400');
+            s.classList.remove('text-yellow-500');
+          }
+      });
+    });
+  });
+
+    // Add new comment dynamically
+    document.getElementById('ratingForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById('nameInput').value;
+      const comment = document.getElementById('commentInput').value;
+
+      if (currentRating === 0) {
+        alert('Please provide a rating!');
+        return;
+      }
+
+      const newComment = document.createElement('div');
+      newComment.className = 'p-4 border rounded-lg';
+      newComment.innerHTML = `
+          <p class="font-medium">⭐ ${currentRating} - ${name}</p>
+          <p class="text-sm text-gray-600">${comment}</p>
+          `;
+          const commentList = document.getElementById('commentsList');
+          commentList.prepend(newComment);
+      
+      // Reset form and rating
+      document.getElementById('ratingForm').reset();
+      currentRating = 0;
+      stars.forEach((star) => {
+        star.classList.add('text-gray-400');
+        star.classList.remove('text-yellow-500');
+      });
+    });
+  </script>
+</body>
+</html>

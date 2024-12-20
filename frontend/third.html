@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Details-page</title>
+        <link href="dist/styles.css" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Quicksand:wght@500..700&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+      <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+      <!-- Font Awesome CDN -->
+
+        <script src="https://cdn.tailwindcss.com"></script> <!-- Tailwind CSS -->
+      </head>
+      <body class="font-quicksand p-4">
+        <header class="flex justify-between items-center py-4 bg-orange-100 max-w-7xl mx-auto px-4 rounded-lg">
+            <!-- Logo and Title -->
+            <div class="flex items-center">
+              <img src="assets/logo.png" alt="Logo" class="w-10 h-10 mr-2">
+              <span class="text-yellow-600 text-2xl font-fun font-serif" style="font-size:2vw">Food Recipe</span>
+            </div>
+            <div class="flex items-center bg-gray-100 p-2 rounded-md ml-auto mr-7">
+                <i class="fas fa-search text-gray-500 mr-2"></i>
+                <input type="text" placeholder="Search recipe" class="bg-transparent outline-none p-1 text-gray-700 w-35 rounded-md py-1">
+                
+            </div>
+              
+
+          
+            <!-- User Icon -->
+            <div class="text-yellow-4xl">
+                <image src="assets/user logo.jpg" alt="logo" class="w-10 h-10 ml-2">
+            </div>
+        </header>
+          
+
+        <section class="relative bg-gray-800 text-white p-2 m-4 rounded-lg mt-5 max-w-7xl mx-auto">
+           
+                <img src="assets/Untitled Project (1).jpg" class="w-full h-96 object-cover rounded-lg">
+            </div>
+            <div class="absolute inset-0 flex flex-col justify-start items-start bg-black bg-opacity-50 p-5 rounded-lg">
+                <h3 class="mt-5 text-2xl"style="font-family: 'Quicksand', sans-serif;">Receipe of the day</h3>
+                <h1 class="mt-8 text-yellow-600 font-fun text-2xl font-serif" style="font-size:3vw">Vegetable Sizzler</h1>
+                <p class="mt-5 text-lg"style="font-family: 'Quicksand', sans-serif;">Sizzlers are a favorite with Indians, as they come with<br> sizzler plates, with tikkis, rice, stir-fried vegetables,<br> French fries, and tasty barbecue sauce.</p>
+                <button class="mt-5 bg-yellow-600 text-white py-2 px-4 rounded-md ml-0">Get Recipe
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </button>
+            </div>
+        </section>
+        <!-- recipe section -->
+        <section class="relative bg-white text-black p-2 m-4 rounded-lg mt-5 max-w-7xl mx-auto">
+        <h3 class="text-2xl font-semibold mb-8 text-yellow-600"style="font-family: 'Quicksand', sans-serif;">Popular Recipes</h3>
+        <div class="relative">
+            <button id="scroll-left" 
+                    class="absolute top-1/2 -translate-y-1/2 left-2 bg-white hover:bg-yellow-600 text-gray-800 p-3 rounded-full shadow-lg z-10">
+                &lt;
+            </button>
+            <button id="scroll-right" 
+                    class="absolute top-1/2 -translate-y-1/2 right-2 bg-white hover:bg-yellow-600 text-gray-800 p-3 rounded-full shadow-lg z-10">
+                &gt;
+            </button>
+        <div class="space-x-5 overflow-x-auto">
+            <div class="relative w-full max-w-4xl mx-auto"></div>
+                <div id="scroll-container" class="flex overflow-x-auto space-x-4 p-4 bg-white rounded-lg hide scrollbar">
+                    <div class="bg-white rounded-lg shadow-lg hover:shadow-2xl hover:scale-105 hover:translate-y-[-30px] transition-all duration-300 p-5 w-64 flex-shrink-0 flex flex-col">
+                        <img src="assets/pannerbutter masala.png" class="w-full h-40 object-cover rounded-lg">
+                        <div class="flex items-center mt-3">
+                            <h4 class="text-lg font-bold mr-2" style="font-family: 'Quicksand', sans-serif;">Paneer Butter Masala</h4>
+                            <div class="flex items-center bg-yellow-100 text-yellow-600 px-2 py-1 rounded-md">
+                                <i class="fas fa-star text-yellow-500 mr-1"></i>
+                                <span class="text-sm font-bold">4.5</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600" style="font-family: 'Quicksand', sans-serif;">Duration: 1h 12m</p>
+                        <p class="text-gray-600 mt-2" style="text-align: left;">Paneer Butter Masala, also known as butter paneer is a rich & creamy curry made with paneer, spices, onions, tomatoes, cashews and butter.</p>
+                        <button class="mt-auto bg-yellow-600 text-white py-2 px-4 rounded-md w-full" onclick="window.location.href='pannerbuttermasala.html'">Get Recipe</button>
+                    </div>
+                    
+                    
+
+
+                    <div class="bg-white rounded-lg shadow-md hover:shadow-2xl hover:scale-105 hover:translate-y-[-30px] transition-all duration-300 p-5 w-64 flex-shrink-0 flex flex-col">
+                        <img src="assets/carrot halwa.jpg" alt="Carrot Halwa" class="w-full h-40 object-cover rounded-lg">
+                        <div class="flex items-center justify-between mt-3">
+                            <h4 class="text-lg font-bold mr-2" style="font-family: 'Quicksand', sans-serif;">Carrot Halwa</h4>
+                            <div class="flex items-center bg-yellow-100 text-yellow-600 px-2 py-1 rounded-md ml-2">
+                                <i class="fas fa-star text-yellow-500 mr-1"></i>
+                                <span class="text-sm font-bold">4.2</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mt-2" style="font-family: 'Quicksand', sans-serif;">Duration: 45m</p>
+                        <p class="text-gray-600 mt-2" style="font-family: 'Quicksand', sans-serif;">Carrot halwa is a carrot-based sweet dessert made by placing grated carrots in a pot containing a specific amount of water, milk, and sugar.</p>
+                        <button class="bg-yellow-600 text-white py-2 px-4 rounded-md">Get Recipe</button>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow-md hover:shadow-2xl hover:scale-105 hover:translate-y-[-30px] transition-all duration-300 p-5 w-64 flex-shrink-0 flex flex-col">
+                        <img src="assets/chicken.jpg" class="w-full h-40 object-cover rounded-lg">
+                        <div class="flex items-center justify-between mt-3">
+                            <h4 class="text-lg font-bold" style="font-family: 'Quicksand', sans-serif;">Tandoori Chicken</h4>
+                            <div class="flex items-center bg-yellow-100 text-yellow-600 px-2 py-1 rounded-md ml-2">
+                                <i class="fas fa-star text-yellow-500 mr-1"></i>
+                                <span class="text-sm font-bold">4.7</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mt-2" style="font-family: 'Quicksand', sans-serif;">Duration: 2h 00m</p>
+                        <p class="text-gray-600 mt-2" style="font-family: 'Quicksand', sans-serif;">Tandoori chicken is a dish made from chicken marinated in yogurt and spices and roasted in a tandoor, a cylindrical clay oven.</p>
+                        <button class="mt-auto bg-yellow-600 text-white py-2 px-4 rounded-md w-full"onclick="window.location.href='Tandoori.html'">Get Recipe</button>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow-md hover:shadow-2xl hover:scale-105 hover:translate-y-[-40px] transition-all duration-300 p-5 w-64 flex-shrink-0 flex flex-col">
+                        <img src="assets/channa.jpg" alt="Channa Masala" class="w-full h-40 object-cover rounded-lg">
+                        <div class="flex items-center justify-between mt-3">
+                            <h4 class="text-lg font-bold" style="font-family: 'Quicksand', sans-serif;">Channa Masala</h4>
+                            <div class="flex items-center bg-yellow-100 text-yellow-600 px-2 py-1 rounded-md ml-2">
+                                <i class="fas fa-star text-yellow-500 mr-1"></i>
+                                <span class="text-sm font-bold">4.0</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mt-2" style="font-family: 'Quicksand', sans-serif;">Duration: 35m</p>
+                        <p class="text-gray-600 mt-2" style="font-family: 'Quicksand', sans-serif;">Chana masala is a North Indian curried dish made with white chickpeas, onions, tomatoes, spices, and herbs.</p>
+                        <button class="mt-auto bg-yellow-600 text-white py-2 px-4 rounded-md w-full">Get Recipe</button>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow-md hover:shadow-2xl hover:scale-105 hover:translate-y-[-30px] transition-all duration-300 p-5 w-64 flex-shrink-0 flex flex-col">
+                        <img src="assets/chicken briyani.jpeg" alt="Chicken Biryani" class="w-full h-40 object-cover rounded-lg">
+                        <div class="flex items-center justify-between mt-3">
+                            <h4 class="text-lg font-bold" style="font-family: 'Quicksand', sans-serif;">Chicken Briyani</h4>
+                            <div class="flex items-center bg-yellow-100 text-yellow-600 px-2 py-1 rounded-md ml-2">
+                                <i class="fas fa-star text-yellow-500 mr-1"></i>
+                                <span class="text-sm font-bold">4.0</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mt-2" style="font-family: 'Quicksand', sans-serif;">Duration: 1hr 12m</p>
+                        <p class="text-gray-600 mt-2" style="font-family: 'Quicksand', sans-serif;">Biryani is a mixed rice dish mainly popular in South Asia. It is made with rice and meat.</p>
+                        <button class="mt-auto bg-yellow-600 text-white py-2 px-4 rounded-md w-full" onclick="window.location.href='receipe-details.html'">Get Recipe</button>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow-md hover:shadow-2xl hover:scale-105 hover:translate-y-[-30px] transition-all duration-300 p-5 w-64 flex-shrink-0 flex flex-col">
+                        <img src="assets/milkshake-with-whole-cookie-and-crumbs.jpg" alt="Oreo Milkshake" class="w-full h-40 object-cover rounded-lg">
+                        <div class="flex items-center justify-between mt-3">
+                            <h4 class="text-lg font-bold" style="font-family: 'Quicksand', sans-serif;">Oreo Milkshake</h4>
+                            <div class="flex items-center bg-yellow-100 text-yellow-600 px-2 py-1 rounded-md ml-2">
+                                <i class="fas fa-star text-yellow-500 mr-1"></i>
+                                <span class="text-sm font-bold">4.5</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mt-2">Duration: 15m</p>
+                        <p class="text-gray-600 mt-2" style="text-align: left;">Blend chocolate sandwich cookies, ice cream, and milk together in a blender until smooth. Pour into glasses.</p>
+                        <button class="mt-auto bg-yellow-600 text-white py-2 px-4 rounded-md w-full" onclick="window.location.href='oreomilkshake.html'">Get Recipe</button>
+                    </div>
+                    
+            
+        </div>
+    </div>
+
+        
+    </section>
+    <!-- javascript for srolling continer -->
+    <script>
+        const scrollContainer = document.getElementById('scroll-container');
+        const scrollLeft = document.getElementById('scroll-left');
+        const scrollRight = document.getElementById('scroll-right');
+
+        scrollLeft.addEventListener('click' , () => {
+            scrollContainer.scrollBy(
+                {
+                    left: -200,
+                    behavior: 'smooth'
+                }
+            );
+        });
+        
+        scrollRight.addEventListener('click' , () => {
+            scrollContainer.scrollBy(
+                {
+                    left: 300,
+                    behavior: 'smooth'
+                }
+            );
+        });
+
+    </script>
+
+    
+</body>
+</html>
