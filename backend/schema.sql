@@ -1,0 +1,17 @@
+CREATE DATABASE IF NOT EXISTS recipe_explorer;
+
+CREATE TABLE IF NOT EXISTS recipe_explorer.users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  email VARCHAR(255) NOT NULL UNIQUE,
+  password VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS recipe_explorer.comments (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  recipe VARCHAR(50) NOT NULL,
+  name VARCHAR(100) NOT NULL,
+  rating TINYINT NOT NULL,
+  comment TEXT NOT NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  INDEX idx_comments_recipe (recipe)
+);

@@ -1,50 +1,53 @@
-document
-  .querySelector("#signup-form")
-  .addEventListener("submit", function (event) {
-    event.preventDefault(); // Prevent default form submission
+redirectIfSignedIn();
 
-    // Collect form data
-    const email = document.querySelector("input[name='email']").value;
-    const password = document.querySelector("input[name='password']").value;
-    const confirmPassword = document.querySelector("input[name='confirmPassword']").value;
+const MIN_PASSWORD_LENGTH = 6;
 
-    // Check if passwords match
-    if (password !== confirmPassword) {
-      alert("Passwords do not match");
+const form = document.querySelector("#signup-form");
+const message = document.querySelector("#form-message");
+const matchMessage = document.querySelector("#match-message");
+const submitButton = form.querySelector("button[type='submit']");
+
+// Live password match indicator
+function updateMatchMessage() {
+  if (!form.confirmPassword.value) {
+    matchMessage.textContent = "";
+    return;
+  }
+  const matches = form.password.value === form.confirmPassword.value;
+  matchMessage.textContent = matches ? "Passwords match" : "Passwords do not match";
+  matchMessage.style.color = matches ? "#16a34a" : "#dc2626";
+}
+
+form.password.addEventListener("input", updateMatchMessage);
+form.confirmPassword.addEventListener("input", updateMatchMessage);
+
+form.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  clearMessage(message);
+
+  const email = form.email.value.trim();
+  const password = form.password.value;
+
+  if (password.length < MIN_PASSWORD_LENGTH) {
+    showMessage(message, `Password must be at least ${MIN_PASSWORD_LENGTH} characters.`);
+    return;
+  }
+  if (password !== form.confirmPassword.value) {
+    showMessage(message, "Passwords do not match.");
+    return;
+  }
+
+  setButtonLoading(submitButton, true, "Creating account...");
+  try {
+    const { ok, data } = await postJson("/api/auth/signup", { email, password });
+    if (!ok) {
+      showMessage(message, data.error || "Sign-up failed. Please try again.");
       return;
     }
-
-    // Prepare data for the backend API (no need to send confirmPassword)
-    const userData = {
-      email,
-      password,
-    };
-
-    // Log the data to the console before sending it
-    console.log('Sending to backend:', userData);
-
-    // Send data to the backend API (sign up)
-    fetch("http://localhost:3001/api/auth/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(userData),
-    })
-      .then((response) => response.json()) // Parse the JSON response
-      .then((data) => {
-        if (data.error) {
-          alert(data.error); // Show error message if signup failed
-        } else {
-          alert("Sign-up successful!");
-          window.location.href = "index.html"; // Redirect to login page if successful
-        }
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-        alert("Something went wrong. Please try again.");
-      });
-  });
-
-
-
+    window.location.href = "index.html?registered=1";
+  } catch (error) {
+    showMessage(message, error.message);
+  } finally {
+    setButtonLoading(submitButton, false);
+  }
+});

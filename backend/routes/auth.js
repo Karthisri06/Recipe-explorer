@@ -1,103 +1,64 @@
 const express = require('express');
-const bcrypt = require('bcryptjs'); // For hashing passwords
-const db = require('./index'); // Database connection
+const bcrypt = require('bcryptjs');
+const db = require('../db');
 
 const router = express.Router();
 
-/**
- * Route: POST /api/auth/signup
- * Description: Handles user registration
- */
+const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+const MIN_PASSWORD_LENGTH = 6;
+
+// POST /api/auth/signup
 router.post('/signup', async (req, res) => {
-  const { email, password, confirmPassword } = req.body;
+  const email = String(req.body.email || '').trim().toLowerCase();
+  const password = String(req.body.password || '');
 
-  // Input validation
-  if (!email || !password || !confirmPassword) {
-    return res.status(400).json({ error: 'All fields are required' });
+  if (!email || !password) {
+    return res.status(400).json({ error: 'Email and password are required' });
   }
-  if (password !== confirmPassword) {
-    return res.status(400).json({ error: 'Passwords do not match' });
+  if (!EMAIL_REGEX.test(email)) {
+    return res.status(400).json({ error: 'Please enter a valid email address' });
+  }
+  if (password.length < MIN_PASSWORD_LENGTH) {
+    return res.status(400).json({ error: `Password must be at least ${MIN_PASSWORD_LENGTH} characters` });
   }
 
-  // Check if email already exists
-  const checkEmailQuery = 'SELECT * FROM users WHERE email = ?';
-  db.query(checkEmailQuery, [email], async (err, result) => {
-    if (err) {
-      console.error('Database query error:', err);
-      return res.status(500).json({ error: 'Database error' });
+  try {
+    const [existing] = await db.query('SELECT id FROM users WHERE email = ?', [email]);
+    if (existing.length > 0) {
+      return res.status(409).json({ error: 'This email is already registered. Try signing in instead.' });
     }
 
-    if (result.length > 0) {
-      return res.status(400).json({ error: 'Email already registered' });
-    }
-
-    try {
-      // Hash the password
-      const hashedPassword = await bcrypt.hash(password, 10);
-
-      // Insert new user into database
-      const insertUserQuery = 'INSERT INTO users (email, password) VALUES (?, ?)';
-      db.query(insertUserQuery, [email, hashedPassword], (err) => {
-        if (err) {
-          console.error('Error inserting user:', err);
-          return res.status(500).json({ error: 'Error saving user' });
-        }
-        res.status(201).json({ message: 'Sign-up successful!' });
-      });
-    } catch (hashErr) {
-      console.error('Error hashing password:', hashErr);
-      return res.status(500).json({ error: 'Error processing request' });
-    }
-  });
+    const hashedPassword = await bcrypt.hash(password, 10);
+    await db.query('INSERT INTO users (email, password) VALUES (?, ?)', [email, hashedPassword]);
+    res.status(201).json({ message: 'Sign-up successful!' });
+  } catch (err) {
+    console.error('Sign-up error:', err);
+    res.status(500).json({ error: 'Something went wrong. Please try again.' });
+  }
 });
 
-/**
- * Route: POST /api/auth/signin
- * Description: Handles user login
- */
+// POST /api/auth/signin
+router.post('/signin', async (req, res) => {
+  const email = String(req.body.email || '').trim().toLowerCase();
+  const password = String(req.body.password || '');
 
-// Sign-in Route
-router.post('/signin', (req, res) => {
-    const { email, password } = req.body;
-  
-    // Input validation
-    if (!email || !password) {
-      return res.status(400).json({ error: 'Email and password are required' });
+  if (!email || !password) {
+    return res.status(400).json({ error: 'Email and password are required' });
+  }
+
+  try {
+    const [users] = await db.query('SELECT email, password FROM users WHERE email = ?', [email]);
+    const valid = users.length > 0 && (await bcrypt.compare(password, users[0].password));
+
+    // Same message for both cases so the response doesn't reveal which emails exist
+    if (!valid) {
+      return res.status(401).json({ error: 'Invalid email or password' });
     }
-  
-    // Query to find user by email
-    const query = 'SELECT * FROM users WHERE email = ?';
-    db.query(query, [email], async (err, results) => {
-      if (err) {
-        console.error('Error querying user:', err);
-        return res.status(500).json({ error: 'Error querying the database' });
-      }
-  
-      if (results.length === 0) {
-        return res.status(401).json({ error: 'Invalid email or password' });
-      }
-  
-      const user = results[0];
-      console.log('User retrieved:', user);
-  
-      // Compare the provided password with the hashed password
-      const isPasswordValid = await bcrypt.compare(password, user.password);
-      if (!isPasswordValid) {
-        return res.status(401).json({ error: 'Invalid email or password' });
-      }
-  
-      res.status(200).json({ message: 'Sign-in successful!' });
-    });
-  });
-  
-  module.exports = router;
+    res.status(200).json({ message: 'Sign-in successful!', email: users[0].email });
+  } catch (err) {
+    console.error('Sign-in error:', err);
+    res.status(500).json({ error: 'Something went wrong. Please try again.' });
+  }
+});
 
-
-
-
-
-
-
-
-
-
+module.exports = router;

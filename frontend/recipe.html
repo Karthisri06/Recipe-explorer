@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recipe - Food Recipe</title>
+  <script src="https://cdn.tailwindcss.com"></script> <!-- Tailwind CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Quicksand:wght@500..700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="theme.css" rel="stylesheet">
+</head>
+
+<body style="font-family: 'Quicksand', sans-serif;" class="soft">
+
+  <!-- Header Section -->
+  <header class="relative w-full h-80 bg-orange-200 overflow-hidden rounded-b-3xl shadow-lg">
+    <img id="hero-image" alt="" class="w-full h-full object-cover">
+    <div class="photo-fade absolute inset-0 pointer-events-none"></div>
+    <a href="recipes.html" class="absolute top-4 left-4 z-10 flex items-center text-amber-200 text-3xl font-bold" style="font-family: 'DM Serif Text', serif;">
+      <img src="assets/logo.png" alt="Food Recipe logo" class="logo-badge mr-3">
+      <span>Food Recipe</span>
+    </a>
+    <div class="absolute top-4 right-4 z-10 flex items-center space-x-4 text-white font-semibold">
+      <a href="recipes.html" class="hover:text-yellow-500">&larr; All recipes</a>
+      <span class="avatar" data-avatar aria-hidden="true"></span>
+      <button type="button" data-signout class="bg-white bg-opacity-25 hover:bg-opacity-40 rounded-full px-4 py-2 text-sm">Sign out</button>
+    </div>
+    <div class="absolute inset-0 flex flex-col justify-center items-center text-white text-center px-4 pointer-events-none">
+      <h1 id="title" class="text-4xl font-extrabold mb-3 text-amber-200" style="font-family: 'DM Serif Text', serif;">Loading...</h1>
+      <div id="meta" class="flex flex-wrap items-center justify-center gap-x-8 gap-y-1 text-sm font-medium"></div>
+    </div>
+  </header>
+
+  <!-- Shown if the recipe cannot be loaded -->
+  <div id="recipe-error" class="hidden soft-card max-w-xl mx-auto mt-10 p-8 text-center" role="alert">
+    <p id="recipe-error-text" class="text-gray-700 mb-4"></p>
+    <a href="recipes.html" class="soft-button inline-block bg-yellow-600 hover:bg-orange-600 text-white font-semibold py-2 px-5">Browse all recipes</a>
+  </div>
+
+  <!-- Recipe Content -->
+  <main id="recipe-content" class="hidden soft-card relative text-black p-8 mt-6 max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div>
+        <h2 class="text-2xl text-yellow-600 font-semibold mb-4">Ingredients</h2>
+        <ul id="ingredients" class="list-none"></ul>
+      </div>
+
+      <div>
+        <h2 class="text-2xl text-yellow-600 font-semibold mb-4">Directions</h2>
+        <ol id="steps" class="list-decimal pl-5 space-y-3 text-gray-700"></ol>
+        <div id="links" class="flex flex-wrap gap-4 mt-6 text-sm font-semibold"></div>
+      </div>
+    </div>
+
+    <!-- Rating & Comments Section -->
+    <section class="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div class="rounded-3xl p-6 bg-orange-50">
+        <h2 class="text-lg text-yellow-600 mb-4">Cooked this? Comment and rate the Recipe</h2>
+        <form id="ratingForm" class="space-y-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-600" for="nameInput">Name</label>
+            <input id="nameInput" name="nameInput" type="text" maxlength="100" class="soft-input w-full p-3" required>
+          </div>
+
+          <div>
+            <span class="block text-sm font-medium text-gray-600">Rating</span>
+            <div class="flex gap-1" id="stars">
+              <span class="star text-gray-400 text-3xl cursor-pointer">&#9733;</span>
+              <span class="star text-gray-400 text-3xl cursor-pointer">&#9733;</span>
+              <span class="star text-gray-400 text-3xl cursor-pointer">&#9733;</span>
+              <span class="star text-gray-400 text-3xl cursor-pointer">&#9733;</span>
+              <span class="star text-gray-400 text-3xl cursor-pointer">&#9733;</span>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-gray-600" for="commentInput">Comment</label>
+            <textarea id="commentInput" name="commentInput" rows="3" maxlength="1000" class="soft-input w-full p-3" required></textarea>
+          </div>
+          <p id="form-message" class="hidden" role="alert"></p>
+          <button type="submit" class="soft-button w-full bg-yellow-600 hover:bg-orange-600 text-white font-semibold p-3">
+            Submit Comment
+          </button>
+        </form>
+      </div>
+
+      <div class="rounded-3xl p-6 border border-orange-100">
+        <h2 class="text-lg text-yellow-600 mb-4">Comments</h2>
+        <div id="commentsList" class="space-y-4"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="text-center text-sm text-gray-500 py-8">
+    Recipes provided by <a href="https://www.themealdb.com" target="_blank" rel="noopener" class="underline">TheMealDB</a>
+  </footer>
+
+  <script src="app.js"></script>
+  <script src="chat.js"></script>
+  <script src="recipe.js"></script>
+</body>
+</html>
